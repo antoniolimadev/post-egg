@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::resource('notes', NoteController::class)
+    ->middleware(['auth', 'verified'])
+    ->only(['index']);
+
+//temporary redirect for convenience
+Route::redirect('/', route('notes.index'));
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
