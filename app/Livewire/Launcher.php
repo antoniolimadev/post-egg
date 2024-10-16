@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Enums\NoteEvent;
 use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -46,7 +47,7 @@ class Launcher extends Component
 
     public function relaunch()
     {
-        $this->dispatch('new-note');
+        $this->dispatch(NoteEvent::CREATED->value);
 
         $this->currentNote = new Note;
         $this->currentNoteId = null;
