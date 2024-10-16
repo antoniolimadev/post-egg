@@ -1,0 +1,31 @@
+.pe-c-note {
+    min-height: rem(100);
+    padding: rem(10);
+    border-radius: $default-border-radius;
+    border: 1px solid #4a4024;
+    background: $woodsmoke;
+    color: $athens-gray;
+    transition: $default-transition-time;
+
+    &:hover {
+        border: 1px solid $yukon-gold;
+        border-radius: $default-border-radius;
+    }
+
+    &__wrapper {
+        display: inline-block;
+        width: rem(250);
+        margin-right: rem(15);
+        margin-bottom: rem(15);
+    }
+
+    &__title {
+        font-size: rem(18);
+        font-weight: bold;
+        margin-bottom: rem(10);
+    }
+
+    &__description {
+        font-size: rem(14);
+    }
+}

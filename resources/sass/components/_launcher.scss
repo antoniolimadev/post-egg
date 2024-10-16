@@ -1,0 +1,41 @@
+.pe-c-launcher {
+    display: inline-block;
+    border-radius: $default-border-radius;
+    padding: rem(10);
+    min-width: rem(500);
+    border: 1px solid $yukon-gold;
+    background: $woodsmoke;
+    color: $athens-gray;
+    transition: $default-transition-time;
+
+    input {
+        font-size: rem(16);
+    }
+
+    textarea {
+        resize: none;
+        font-size: rem(14);
+    }
+
+    input,
+    textarea {
+        background: $woodsmoke;
+        color: $athens-gray;
+        width: 100%;
+        padding: rem(10);
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+
+        border: none;
+    }
+
+    &__discard {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        cursor: pointer;
+    }
+}

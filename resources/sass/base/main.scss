@@ -1,0 +1,38 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1b1b1f;
+    color: $athens-gray;
+    font-size: rem(14);
+    font-family: FigTree, sans-serif;
+}
+
+a,
+a:link,
+a:visited {
+    cursor: pointer;
+    transition: $default-transition-time;
+    text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+}
+
+ol, ul {
+    margin-left: 1rem;
+}
