@@ -22,6 +22,7 @@ class NoteContainer extends Component
     }
 
     #[On(NoteEvent::CREATED->value)]
+    #[On(NoteEvent::DESTROYED->value)]
     public function newNote(): void
     {
         $this->refreshNotes();
