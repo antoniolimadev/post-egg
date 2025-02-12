@@ -1,22 +1,41 @@
 .pe-c-note {
     min-height: rem(100);
-    padding: rem(10);
-    border-radius: $default-border-radius;
-    border: 1px solid #4a4024;
+    padding: rem(10) rem(20);
     background: $woodsmoke;
     color: $athens-gray;
-    transition: $default-transition-time;
-
-    &:hover {
-        border: 1px solid $yukon-gold;
-        border-radius: $default-border-radius;
-    }
 
     &__wrapper {
-        display: inline-block;
-        width: rem(250);
-        margin-right: rem(15);
+        border: 1px solid #4a4024;
+        border-radius: $default-border-radius;
+        transition: $default-transition-time;
+        position: relative;
+        box-sizing: border-box;
+        display: block;
+        min-width: rem(250);
+        width: 100%;
+        max-height: rem(400);
         margin-bottom: rem(15);
+        overflow-y: hidden;
+
+        &:hover {
+            border: 1px solid $yukon-gold;
+            border-radius: $default-border-radius;
+        }
+    }
+
+    &__global_container {
+        padding: 0 rem(15);
+        width: 100%;
+        column-width: rem(255);
+        column-gap: rem(20);
+
+        $note-full-size: rem(255) + rem(20);
+
+        @for $size from 1 through 20 {
+            @media screen and (min-width: $size * $note-full-size) {
+                column-count: $size;
+            }
+        }
     }
 
     &__title {
@@ -27,5 +46,24 @@
 
     &__description {
         font-size: rem(14);
+        line-height: rem(23);
+
+        &:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(transparent rem(300), $woodsmoke);
+        }
+    }
+
+    &__delete {
+        cursor: pointer;
+        position: absolute;
+        color: $yellow-sea;
+        right: rem(10);
+        top: rem(10);
     }
 }
