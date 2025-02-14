@@ -19,6 +19,8 @@
             wire:model.live.debounce="description"
             placeholder="Description"
             rows="5"
+            @input="resize($event)"
+            :style="! isFocused && { height: 'auto' }"
         ></textarea>
     </p>
 
@@ -33,3 +35,12 @@
     </div>
 
 </div>
+<script>
+    function resize(event) {
+        const textarea = event.target;
+
+        if (textarea.offsetHeight < parseInt(getComputedStyle(textarea).maxHeight)) {
+            textarea.style.height = `${textarea.scrollHeight}px`;
+        }
+    }
+</script>
