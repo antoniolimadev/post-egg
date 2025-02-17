@@ -16,6 +16,11 @@ class Note extends Component
         $this->dispatch(NoteEvent::DESTROYED->value);
     }
 
+    public function edit()
+    {
+        $this->dispatch(NoteEvent::EDIT->value, $this->note);
+    }
+
     public function render()
     {
         return view('livewire.note');

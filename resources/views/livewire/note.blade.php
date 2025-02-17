@@ -2,6 +2,7 @@
     x-data="{ deleteButtonIsVisible: false }"
     x-on:mouseenter="deleteButtonIsVisible=true"
     x-on:mouseleave="deleteButtonIsVisible=false"
+    wire:click="edit()"
     class="pe-c-note__wrapper"
 >
     <div class="pe-c-note">

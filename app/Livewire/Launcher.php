@@ -6,6 +6,7 @@ use App\Enums\NoteEvent;
 use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Launcher extends Component
@@ -15,6 +16,7 @@ class Launcher extends Component
     public Note $currentNote;
     public ?int $currentNoteId = null;
     public bool $canBeDiscarded = false;
+    public bool $editMode = false;
 
     public function updated($field, $value)
     {
@@ -53,6 +55,18 @@ class Launcher extends Component
         $this->currentNoteId = null;
         $this->reset('title', 'description');
         $this->canBeDiscarded = false;
+        $this->editMode = false;
+    }
+
+    #[On(NoteEvent::EDIT->value)]
+    public function editNote(Note $note): void
+    {
+        $this->currentNote = $note;
+        $this->currentNoteId = $note->id;
+        $this->title = $note->title ?? '';
+        $this->description = $note->description ?? '';
+        $this->canBeDiscarded = true;
+        $this->editMode = true;
     }
 
     public function render(): View

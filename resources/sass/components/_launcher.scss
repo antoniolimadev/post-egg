@@ -23,6 +23,7 @@
     textarea {
         background: $woodsmoke;
         color: $athens-gray;
+        line-height: rem(23);
         width: 100%;
         padding: rem(10);
 
@@ -39,5 +40,36 @@
         right: 0;
         bottom: 0;
         cursor: pointer;
+    }
+
+    &--edit-mode {
+        z-index: 30;
+        position: fixed;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        max-width: rem(600);
+
+        input {
+            font-size: rem(20);
+        }
+
+        textarea {
+            height: rem(500);
+            overflow: scroll;
+            overscroll-behavior: contain;
+            font-size: rem(16);
+        }
+
+        &__background {
+            z-index: 10;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #424242;
+            opacity: 0.66;
+        }
     }
 }
