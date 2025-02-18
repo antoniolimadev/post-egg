@@ -7,6 +7,7 @@
     background: $woodsmoke;
     color: $athens-gray;
     transition: $default-transition-time;
+    box-shadow: 4.7px 9.4px 9.4px hsl(0deg 0% 0% / 0.35);
 
     input {
         font-size: rem(16);
@@ -40,6 +41,21 @@
         right: 0;
         bottom: 0;
         cursor: pointer;
+    }
+
+    &__footer {
+        text-align: right;
+        display: flex;
+        justify-content: space-between;
+        padding: rem(12) rem(4)  rem(4) rem(4);
+        //border-top: 1px solid #282828;
+    }
+
+    &__last_edit {
+        font-size: rem(12);
+        opacity: 0.8;
+        font-style: italic;
+        display: inline-block;
     }
 
     &--edit-mode {

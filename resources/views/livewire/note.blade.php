@@ -10,14 +10,14 @@
             {{ $note->title }}
         </p>
         <p class="pe-c-note__description">
-            {!! nl2br($note->description) !!}
+            {!! nl2br(strip_tags($note->description)) !!}
         </p>
     </div>
 
     <div
         x-show="deleteButtonIsVisible"
         x-transition
-        wire:click="deleteMe"
+        wire:click.stop="deleteMe"
         class="pe-c-note__delete"
         title="Delete"
     >

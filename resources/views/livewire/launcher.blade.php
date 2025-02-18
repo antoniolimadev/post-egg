@@ -27,14 +27,26 @@
             ></textarea>
         </p>
 
-        <div x-data="{ isVisible: @entangle('canBeDiscarded') }" style="position: relative;">
-            <a
-                wire:click="discard"
-                x-show="isVisible"
-                class="pe-c-launcher__discard"
-            >
-                <i class="fa fa-trash-alt"></i>
-            </a>
+        <div class="pe-c-launcher__footer">
+            @if($currentNote)
+                <span
+                    x-show="editMode"
+                    class="pe-c-launcher__last_edit"
+                >
+                    Edited {{ Carbon::parse($currentNote->updated_at)->diffForHumans() }}
+                </span>
+            @endif
+
+            <div x-data="{ isVisible: @entangle('canBeDiscarded') }" style="position: relative;">
+                <a
+                    wire:click="discard"
+                    x-show="isVisible"
+                    class="pe-c-launcher__discard"
+                >
+                    <i class="fa fa-trash-alt"></i>
+                </a>
+            </div>
+
         </div>
     </div>
 
