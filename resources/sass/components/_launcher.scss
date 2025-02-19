@@ -36,19 +36,21 @@
         border: none;
     }
 
-    &__discard {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        cursor: pointer;
-    }
-
     &__footer {
         text-align: right;
         display: flex;
         justify-content: space-between;
-        padding: rem(12) rem(4)  rem(4) rem(4);
-        //border-top: 1px solid #282828;
+        padding: rem(12) rem(4) rem(4) rem(4);
+        border-top: 1px solid #282828;
+
+        a {
+            padding: rem(6) rem(12);
+            border-radius: rem(6);
+
+            &:hover {
+                background-color: #2a2a2a;
+            }
+        }
     }
 
     &__last_edit {

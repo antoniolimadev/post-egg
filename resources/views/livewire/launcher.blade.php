@@ -1,6 +1,6 @@
 <div
     x-data="{ isFocused: false, editMode: @entangle('editMode') }"
-    @click.away="$wire.relaunch(); isFocused = false;"
+    x-on:click.away="$wire.relaunch(); isFocused = false;"
     style="display: inline;"
 >
     <div
@@ -27,7 +27,24 @@
             ></textarea>
         </p>
 
-        <div class="pe-c-launcher__footer">
+        <div
+            x-data="{ canBeDiscarded: @entangle('canBeDiscarded') }"
+            x-show="isFocused || editMode"
+            class="pe-c-launcher__footer"
+        >
+            <span>
+                <span>
+                    <a
+                        x-show="canBeDiscarded"
+                        wire:click="discard"
+                        title="Delete note"
+                    >
+                        <i class="fa fa-trash-alt"></i>
+                    </a>
+                </span>
+            </span>
+
+
             @if($currentNote)
                 <span
                     x-show="editMode"
@@ -37,15 +54,11 @@
                 </span>
             @endif
 
-            <div x-data="{ isVisible: @entangle('canBeDiscarded') }" style="position: relative;">
-                <a
-                    wire:click="discard"
-                    x-show="isVisible"
-                    class="pe-c-launcher__discard"
-                >
-                    <i class="fa fa-trash-alt"></i>
+            <span>
+                <a x-on:click="$wire.relaunch(); isFocused = false;">
+                    Close
                 </a>
-            </div>
+            </span>
 
         </div>
     </div>
