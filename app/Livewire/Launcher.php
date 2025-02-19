@@ -47,6 +47,17 @@ class Launcher extends Component
         $this->canBeDiscarded = false;
     }
 
+    public function archive()
+    {
+        $this->currentNote->archive();
+        $this->currentNoteId = null;
+        $this->reset('title', 'description');
+        $this->canBeDiscarded = false;
+        $this->editMode = false;
+
+        $this->dispatch(NoteEvent::ARCHIVED->value);
+    }
+
     public function relaunch()
     {
         $this->dispatch(NoteEvent::CREATED->value);

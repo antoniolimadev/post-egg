@@ -74,7 +74,7 @@
 
         textarea {
             height: rem(500);
-            overflow: scroll;
+            overflow-y: scroll;
             overscroll-behavior: contain;
             font-size: rem(16);
         }

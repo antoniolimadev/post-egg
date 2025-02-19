@@ -33,7 +33,13 @@
             class="pe-c-launcher__footer"
         >
             <span>
-                <span>
+                    <a
+                        x-show="canBeDiscarded"
+                        wire:click="archive()"
+                        title="Archive note"
+                    >
+                        <i class="fa fa-archive"></i>
+                    </a>
                     <a
                         x-show="canBeDiscarded"
                         wire:click="discard"
@@ -41,7 +47,6 @@
                     >
                         <i class="fa fa-trash-alt"></i>
                     </a>
-                </span>
             </span>
 
 

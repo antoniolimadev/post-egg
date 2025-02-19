@@ -17,12 +17,14 @@ class NoteContainer extends Component
     {
         $this->userNotes = Note::query()
             ->where('user_id', Auth::id())
+            ->whereNull('archived_at')
             ->orderByDesc('created_at')
             ->get();
     }
 
     #[On(NoteEvent::CREATED->value)]
     #[On(NoteEvent::DESTROYED->value)]
+    #[On(NoteEvent::ARCHIVED->value)]
     public function newNote(): void
     {
         $this->refreshNotes();
