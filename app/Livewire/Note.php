@@ -3,11 +3,18 @@
 namespace App\Livewire;
 
 use App\Enums\NoteEvent;
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
 class Note extends Component
 {
+    #[Reactive]
     public \App\Models\Note $note;
+
+    public function mount(\App\Models\Note $note)
+    {
+        $this->note = $note;
+    }
 
     public function deleteMe()
     {

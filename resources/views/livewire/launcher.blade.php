@@ -1,11 +1,12 @@
 <div
     x-data="{ isFocused: false, editMode: @entangle('editMode') }"
-    x-on:click.away="$wire.relaunch(); isFocused = false;"
+    x-on:click.away="if (isFocused || editMode) { $wire.relaunch(); isFocused = false; }"
     style="display: inline;"
 >
     <div
         class="pe-c-launcher"
-        :class="{'pe-c-launcher--edit-mode': editMode }">
+        :class="{'pe-c-launcher--edit-mode': editMode }"
+    >
         <p>
             <input
                 type="text"
