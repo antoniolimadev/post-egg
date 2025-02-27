@@ -12,6 +12,7 @@
                 type="text"
                 wire:model.live.debounce="title"
                 @focus="isFocused = true"
+                class="focus:ring-0"
                 placeholder="Post it..."
             >
         </p>
@@ -25,6 +26,7 @@
                 rows="5"
                 @input="resize($event)"
                 :style="(! isFocused && ! editMode) && { height: 'auto' }"
+                class="focus:ring-0"
             ></textarea>
         </p>
 

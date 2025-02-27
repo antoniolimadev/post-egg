@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div style="padding: 0 10px;" class="pe-l-text-align-center">
+    <div style="padding: 10px;" class="pe-l-text-align-center">
 
         <livewire:launcher />
 
