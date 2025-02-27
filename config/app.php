@@ -156,6 +156,7 @@ return [
     'demo' => [
         'email' => env('DEMO_EMAIL', 'demo@postegg'),
         'username' => env('DEMO_USERNAME', 'Demo User'),
+        'password' => env('DEMO_PASSWORD', 'demo'),
     ],
 
     /*

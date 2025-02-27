@@ -10,6 +10,12 @@ new #[Layout('layouts.guest')] class extends Component
 {
     public LoginForm $form;
 
+    public function mount()
+    {
+        $this->form->email = config('app.demo.email');
+        $this->form->password = config('app.demo.password');
+    }
+
     /**
      * Handle an incoming authentication request.
      */
@@ -58,11 +64,11 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}" wire:navigate>
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+{{--            @if (Route::has('password.request'))--}}
+{{--                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}" wire:navigate>--}}
+{{--                    {{ __('Forgot your password?') }}--}}
+{{--                </a>--}}
+{{--            @endif--}}
 
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
