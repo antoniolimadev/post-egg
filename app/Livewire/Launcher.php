@@ -6,6 +6,7 @@ use App\Enums\NoteEvent;
 use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -13,7 +14,9 @@ class Launcher extends Component
 {
     public string $title = '';
     public string $description = '';
+    #[Locked]
     public Note $currentNote;
+    #[Locked]
     public ?int $currentNoteId = null;
     public bool $canBeDiscarded = false;
     public bool $editMode = false;
@@ -23,9 +26,13 @@ class Launcher extends Component
         $this->validate();
 
         if(! $this->currentNoteId) {
+            $this->authorize('create', Note::class);
+
             $this->currentNote = new Note;
             $this->currentNote->user_id = Auth::id();
         }
+
+        $this->authorize('update', $this->currentNote);
 
         if ($field === 'title') {
             $this->currentNote->title = $value;
@@ -43,6 +50,8 @@ class Launcher extends Component
 
     public function discard()
     {
+        $this->authorize('delete', $this->currentNote);
+
         $this->resetErrorBag();
         $this->currentNote->delete();
         $this->currentNoteId = null;
@@ -52,6 +61,8 @@ class Launcher extends Component
 
     public function archive()
     {
+        $this->authorize('archive', $this->currentNote);
+
         $this->currentNote->archive();
         $this->currentNoteId = null;
         $this->reset();
