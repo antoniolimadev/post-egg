@@ -4,8 +4,8 @@
 
         <livewire:launcher />
 
-        <div style="margin-top: 50px; text-align: left;">
-            <p class="pe-l-margin-bottom-10">MY NOTES</p>
+        <div class="mt-50 text-left" >
+            <p class="ml-5 mb-10">MY NOTES</p>
 
             <livewire:note-container />
         </div>

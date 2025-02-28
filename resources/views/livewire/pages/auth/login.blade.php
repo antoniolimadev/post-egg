@@ -1,7 +1,9 @@
 <?php
 
 use App\Livewire\Forms\LoginForm;
+use App\Models\Note;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
@@ -26,6 +28,14 @@ new #[Layout('layouts.guest')] class extends Component
         $this->form->authenticate();
 
         Session::regenerate();
+
+        if (Auth::user()->isDemoUser) {
+            $note = new Note;
+            $note->user_id = Auth::id();
+            $note->title = config('app.demo.welcome.title');
+            $note->description = config('app.demo.welcome.description');
+            $note->save();
+        }
 
         $this->redirectIntended(default: RouteServiceProvider::HOME, navigate: true);
     }
