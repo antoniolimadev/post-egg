@@ -17,7 +17,7 @@
     <div
         x-show="deleteButtonIsVisible"
         x-transition
-        wire:click.stop="deleteMe"
+        wire:click.stop="$parent.delete({{ $note }})"
         class="pe-c-note__delete"
         title="Delete"
     >

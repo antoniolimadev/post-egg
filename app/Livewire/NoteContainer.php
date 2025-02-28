@@ -35,6 +35,15 @@ class NoteContainer extends Component
         $this->refreshNotes();
     }
 
+    public function delete(Note $note)
+    {
+        $this->authorize('delete', $note);
+
+        $note->delete();
+
+        $this->refreshNotes();
+    }
+
     public function render()
     {
         return view('livewire.note-container');

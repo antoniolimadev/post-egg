@@ -48,7 +48,7 @@ class Launcher extends Component
         $this->currentNoteId = $this->currentNote->id;
     }
 
-    public function discard()
+    public function delete()
     {
         $this->authorize('delete', $this->currentNote);
 
@@ -57,6 +57,8 @@ class Launcher extends Component
         $this->currentNoteId = null;
         $this->reset();
         $this->canBeDiscarded = false;
+
+        $this->dispatch(NoteEvent::DESTROYED->value);
     }
 
     public function archive()

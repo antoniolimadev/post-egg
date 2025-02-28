@@ -51,7 +51,7 @@
                     </a>
                     <a
                         x-show="canBeDiscarded"
-                        wire:click="discard"
+                        wire:click="delete"
                         title="Delete note"
                     >
                         <i class="fa fa-trash-alt"></i>
