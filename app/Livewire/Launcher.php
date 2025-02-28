@@ -20,6 +20,8 @@ class Launcher extends Component
 
     public function updated($field, $value)
     {
+        $this->validate();
+
         if(! $this->currentNoteId) {
             $this->currentNote = new Note;
             $this->currentNote->user_id = Auth::id();
@@ -41,9 +43,10 @@ class Launcher extends Component
 
     public function discard()
     {
+        $this->resetErrorBag();
         $this->currentNote->delete();
         $this->currentNoteId = null;
-        $this->reset('title', 'description');
+        $this->reset();
         $this->canBeDiscarded = false;
     }
 
@@ -51,7 +54,7 @@ class Launcher extends Component
     {
         $this->currentNote->archive();
         $this->currentNoteId = null;
-        $this->reset('title', 'description');
+        $this->reset();
         $this->canBeDiscarded = false;
         $this->editMode = false;
 
@@ -60,11 +63,13 @@ class Launcher extends Component
 
     public function relaunch()
     {
+        $this->resetErrorBag();
+
         $this->dispatch(NoteEvent::CREATED->value);
 
         $this->currentNote = new Note;
         $this->currentNoteId = null;
-        $this->reset('title', 'description');
+        $this->reset();
         $this->canBeDiscarded = false;
         $this->editMode = false;
     }
@@ -78,6 +83,14 @@ class Launcher extends Component
         $this->description = $note->description ?? '';
         $this->canBeDiscarded = true;
         $this->editMode = true;
+    }
+
+    protected function rules()
+    {
+        return [
+            'title' => 'max: 200',
+            'description' => 'max: 20000',
+        ];
     }
 
     public function render(): View

@@ -30,6 +30,12 @@
             ></textarea>
         </p>
 
+        @if ($errors->any())
+            <p class="pe-c-launcher__error">
+                {{ $errors->first() }}
+            </p>
+        @endif
+
         <div
             x-data="{ canBeDiscarded: @entangle('canBeDiscarded') }"
             x-show="isFocused || editMode"

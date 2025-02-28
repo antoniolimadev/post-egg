@@ -90,4 +90,10 @@
             opacity: 0.66;
         }
     }
+
+    &__error {
+        font-size: rem(12);
+        padding: rem(5);
+        background-color: brown;
+    }
 }
