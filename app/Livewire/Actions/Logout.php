@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Actions;
 
+use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -12,6 +13,10 @@ class Logout
      */
     public function __invoke(): void
     {
+        if (Auth::user()->isDemoUser) {
+            Note::query()->delete();
+        }
+
         Auth::guard('web')->logout();
 
         Session::invalidate();
