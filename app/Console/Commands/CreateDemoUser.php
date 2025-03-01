@@ -31,7 +31,7 @@ class CreateDemoUser extends Command
             User::query()->create([
                 'name' => config('app.demo.username'),
                 'email' => config('app.demo.email'),
-                'password' => Hash::make(config('app.demo.email')),
+                'password' => Hash::make(config('app.demo.password')),
             ]);
 
             $this->info('Demo user created.');
