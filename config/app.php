@@ -156,7 +156,7 @@ return [
     'demo' => [
         'email' => env('DEMO_EMAIL', 'demo@postegg'),
         'username' => env('DEMO_USERNAME', 'Demo User'),
-        'password' => env('DEMO_PASSWORD', 'demo'),
+        'password' => env('DEMO_PASSWORD', 'password'),
         'welcome' => [
             'title' => 'Welcome!',
             'description' => "This is my note taking app, built in Livewire. Feel free to explore.\n\nSource code available here: https://github.com/antoniolimadev/post-egg",
