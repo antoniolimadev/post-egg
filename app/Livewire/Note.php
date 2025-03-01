@@ -16,13 +16,6 @@ class Note extends Component
         $this->note = $note;
     }
 
-    public function deleteMe()
-    {
-        $this->note->delete();
-
-        $this->dispatch(NoteEvent::DESTROYED->value);
-    }
-
     public function edit()
     {
         $this->dispatch(NoteEvent::EDIT->value, $this->note);

@@ -7,17 +7,17 @@
 >
     <div class="pe-c-note">
         <p class="pe-c-note__title pe-l-clamp pe-l-clamp--limit-1">
-            {{ $note->title }}
+            {!! nl2br(e($note->title)) !!}
         </p>
         <p class="pe-c-note__description">
-            {!! nl2br(strip_tags($note->description)) !!}
+            {!! nl2br(e($note->description)) !!}
         </p>
     </div>
 
     <div
         x-show="deleteButtonIsVisible"
         x-transition
-        wire:click.stop="deleteMe"
+        wire:click.stop="$parent.delete({{ $note }})"
         class="pe-c-note__delete"
         title="Delete"
     >

@@ -146,6 +146,25 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Demo user
+    |--------------------------------------------------------------------------
+    |
+    | Variables used when running the app as a demo user
+    |
+    */
+
+    'demo' => [
+        'email' => env('DEMO_EMAIL', 'demo@postegg'),
+        'username' => env('DEMO_USERNAME', 'Demo User'),
+        'password' => env('DEMO_PASSWORD', 'password'),
+        'welcome' => [
+            'title' => 'Welcome!',
+            'description' => "This is my note taking app, built in Livewire. Feel free to explore.\n\nSource code available here: https://github.com/antoniolimadev/post-egg",
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |

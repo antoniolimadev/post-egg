@@ -1,11 +1,11 @@
 <x-app-layout>
 
-    <div style="padding: 0 10px;" class="pe-l-text-align-center">
+    <div style="padding: 10px;" class="pe-l-text-align-center">
 
         <livewire:launcher />
 
-        <div style="margin-top: 50px; text-align: left;">
-            <p class="pe-l-margin-bottom-10">MY NOTES</p>
+        <div class="mt-50 text-left" >
+            <p class="ml-5 mb-10">MY NOTES</p>
 
             <livewire:note-container />
         </div>
